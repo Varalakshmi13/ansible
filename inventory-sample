@@ -28,3 +28,6 @@ cart-prd.roboshop.internal
 #ansible -i inventory-sample  -i /tmp/1 all --list-hosts
 #ansible -i host1,host2 all --list-hosts
 #ansible -i localhost, all --list-hosts
+
+#ansible -i inv all -m ping
+#ansible -i inv all -u centos -k -m ping
