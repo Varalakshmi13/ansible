@@ -21,4 +21,10 @@ cart-dev.roboshop.internal
 catalogue-prd.roboshop.internal
 cart-prd.roboshop.internal
 
-##ansible -i inventory-sample all --list-hosts                                                                                                           ts
+#ansible:
+#ansible -i inventory-sample all --list-hosts
+#ansible -i inventory-sample CATALOGUE --list-hosts
+#ansible -i inventory-sample dev --list-hosts
+#ansible -i inventory-sample  -i /tmp/1 all --list-hosts
+#ansible -i host1,host2 all --list-hosts
+#ansible -i localhost, all --list-hosts
