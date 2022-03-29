@@ -1,0 +1,22 @@
+192.123.2.1
+sample.roboshop.internal
+192.160.0.[10:20]
+
+#Institute in USA(multi reg) and India(can extend to multi region)
+#web,app,db
+COUNTRYCODE-DCNO=DCNO-APPTYPE-PROJECTCDE-ENV-INDEX.DOMAIN
+2c-2n-web/app/db-5c-1c-2n.domain
+us-01-web-catlg-d-01.roboshop.internal
+
+#roboshop scope
+[CATALOGUE]
+catalogue-dev.roboshop.internal
+catalogue-prd.roboshop.internal
+
+[DEV]
+catalogue-dev.roboshop.internal
+cart-dev.roboshop.internal
+
+[PRD]
+catalogue-prd.roboshop.internal
+cart-prd.roboshop.internal
