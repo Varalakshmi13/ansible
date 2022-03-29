@@ -13,10 +13,12 @@ us-01-web-catlg-d-01.roboshop.internal
 catalogue-dev.roboshop.internal
 catalogue-prd.roboshop.internal
 
-[DEV]
+[dev]
 catalogue-dev.roboshop.internal
 cart-dev.roboshop.internal
 
-[PRD]
+[prd]
 catalogue-prd.roboshop.internal
 cart-prd.roboshop.internal
+
+##ansible -i inventory-sample all --list-hosts                                                                                                           ts
