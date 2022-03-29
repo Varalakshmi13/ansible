@@ -31,3 +31,5 @@ cart-prd.roboshop.internal
 
 #ansible -i inv all -m ping
 #ansible -i inv all -u centos -k -m ping
+#ansible -i inv all -u centos -k -b -m yum -a name=nginx
+#ansible -i inv all -u centos -k -b -m systemd -a "name=nginx state=started"
