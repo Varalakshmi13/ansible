@@ -59,7 +59,7 @@
 
     - name: print output of shell
       ansible.builtin.debug:
-        msg: "{{OUT}}"   #Sstarted with variable, o we used quote
+        msg: "{{OUT.stdout}}"   #Sstarted with variable, o we used quote
 
 
 
