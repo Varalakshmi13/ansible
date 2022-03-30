@@ -61,5 +61,12 @@
       ansible.builtin.debug:
         msg: "{{OUT.stdout}}"   #Sstarted with variable, o we used quote
 
+    - name: Set a fact
+      ansible.builtin.set_fact:
+        OUTPUT: "{{OUT.stdout}}"
+
+    - name: print output of shell
+      ansible.builtin.debug:
+        msg: "{{OUTPUT}}"
 
 
