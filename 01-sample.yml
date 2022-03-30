@@ -1,0 +1,10 @@
+- name: Sample play
+  hosts: all
+  tasks:
+    - name: Print Hello World
+      ansible.builtin.debug:
+        msg: Hello World
+
+
+
+#in ansible we print using debug
