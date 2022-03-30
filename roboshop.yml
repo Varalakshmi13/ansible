@@ -1,10 +1,5 @@
 - name: Frontend Setup
-  hosts: FRONTEND
+  hosts: '{{host}}'
   become: yes
   roles:
-    - frontend
-- name: Frontend Setup
-  hosts: MONGODB
-  become: yes
-  roles:
-    - mongodb
+    - "{{role_name}}"
