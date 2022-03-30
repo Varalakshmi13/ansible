@@ -41,7 +41,7 @@
     name: nginx
     state: installed
 
-- name: UDownload and extract frontend
+- name: Download and extract frontend
   ansible.builtin.unarchive:
     src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
     dest: /tmp
