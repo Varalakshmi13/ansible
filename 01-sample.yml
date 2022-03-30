@@ -8,3 +8,8 @@
 
 
 #in ansible we print using debug
+#ansible-playbook -i inv -u centos -k 01-sample.yml
+#-k is to ask password
+#in output we have rescue --> one task is failure, we want to handle that
+#ignored - if task is failure, if we want to ignore it
+
