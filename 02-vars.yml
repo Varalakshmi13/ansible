@@ -15,3 +15,15 @@
     - name: Print URL
       ansible.builtin.debug:
         msg: URL = {{URL}}
+
+
+- name: Task level variables
+  hosts: all
+  tasks:
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: URL = {{URL}}
+      vars:
+        URL: tasks.google.com
+
+#if we declare var at task level the only that task can access the variable
