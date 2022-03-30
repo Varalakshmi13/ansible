@@ -17,3 +17,23 @@
 #ansible -i inv all -u centos -k -m ping
 #ansible -i inv all -u centos -k -b -m yum -a name=nginx
 #ansible -i inv all -u centos -k -b -m systemd -a "name=nginx state=started"
+
+Ansible roles structure :
+# playbooks
+site.yml
+webservers.yml
+fooservers.yml
+roles/
+    common/
+        tasks/
+        handlers/
+        library/
+        files/
+        templates/
+        vars/
+        defaults/
+        meta/
+    webservers/
+        tasks/
+        defaults/
+        meta/

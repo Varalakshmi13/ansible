@@ -49,7 +49,7 @@
         msg: Architecture = {{ansible_architecture}}
 
 # to not to prompt for pwd :  git pull;ansible-playbook -i inv -u centos -e ansible_password=DevOps321  02-vars.yml -e Architecture=32
-
+#below are at play level
 - name: Register var
   hosts: all
   tasks:
