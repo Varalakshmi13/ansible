@@ -61,7 +61,7 @@
       ansible.builtin.debug:
         msg: "{{OUT.stdout}}"   #Sstarted with variable, o we used quote
 
-    - name: Set a fact
+    - name: Set a fact #you are declaring variable in between and you are using it for remaining playbook using facts
       ansible.builtin.set_fact:
         OUTPUT: "{{OUT.stdout}}"
 
