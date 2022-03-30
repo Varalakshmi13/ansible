@@ -34,3 +34,6 @@
     - name: Print URL
       ansible.builtin.debug:
         msg: URL = {{URL}}
+
+#command line variable :
+        #ansible-playbook -i inv -u centos -k 02-vars.yml -e URL=cli.google.com
