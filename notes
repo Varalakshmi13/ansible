@@ -1,0 +1,19 @@
+#in ansible we print using debug
+#ansible-playbook -i inv -u centos -k 01-sample.yml
+#-k is to ask password
+#in output we have rescue --> one task is failure, we want to handle that
+#ignored - if task is failure, if we want to ignore it
+
+
+#ansible:
+#ansible -i inventory-sample all --list-hosts
+#ansible -i inventory-sample CATALOGUE --list-hosts
+#ansible -i inventory-sample dev --list-hosts
+#ansible -i inventory-sample  -i /tmp/1 all --list-hosts
+#ansible -i host1,host2 all --list-hosts
+#ansible -i localhost, all --list-hosts
+
+#ansible -i inv all -m ping
+#ansible -i inv all -u centos -k -m ping
+#ansible -i inv all -u centos -k -b -m yum -a name=nginx
+#ansible -i inv all -u centos -k -b -m systemd -a "name=nginx state=started"
