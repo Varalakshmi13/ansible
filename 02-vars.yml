@@ -39,3 +39,11 @@
         #ansible-playbook -i inv -u centos -k 02-vars.yml -e URL=cli.google.com
         #cli has first precedence
     #order :  cli > task level > vars from file > play level > inv
+
+
+- name: Fact variables
+  hosts: all
+  tasks:
+    - name: Print Hostname
+      ansible.builtin.debug:
+        msg: Architecture = {{ansible_architecture}}
