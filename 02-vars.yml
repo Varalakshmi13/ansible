@@ -49,3 +49,17 @@
         msg: Architecture = {{ansible_architecture}}
 
 # to not to prompt for pwd :  git pull;ansible-playbook -i inv -u centos -e ansible_password=DevOps321  02-vars.yml -e Architecture=32
+
+- name: Register var
+  hosts: all
+  tasks:
+    - name: Run schell module
+      ansible.builtin.shell: uptime
+      register: OUT
+
+    - name: print output of shell
+      ansible.builtin.debug:
+        msg: "{{OUT}}"   #Sstarted with variable, o we used quote
+
+
+
