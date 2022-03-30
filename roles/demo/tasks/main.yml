@@ -1,0 +1,3 @@
+- name: Print url
+  ansible.builtin.debug:
+    msg: URL = {{URL}}
