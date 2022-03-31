@@ -1,5 +1,11 @@
 - name: Frontend Setup
-  hosts: '{{host}}'
+  hosts: '{{HOST}}'
   become: yes
   roles:
     - "{{role_name}}"
+
+
+
+
+
+#ansible-playbook -i inv  roboshop.yml ansible_user=centos ansible_password=DevOps321 -e role_name=${COMPONENT} -e HOST=$(echo $COMPONENT | tr [a-z] [A-Z])
