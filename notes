@@ -43,9 +43,19 @@ install git plugin and clone ansible git repo
 change branch from master to main
 Build with parameters : string :
 give shell command:
-ansible-playbook -i inv  roboshop.yml -e ansible_user=centos
--e ansible_password=DevOps321 -e role_name=${COMPONENT} -e HOST=$(echo $COMPONENT | tr [a-z] [A-Z])
+
+ansible-playbook -i inv  roboshop.yml
+-e ansible_user=centos
+-e ansible_password=DevOps321
+-e role_name=${COMPONENT} -e
+HOST=$(echo $COMPONENT | tr [a-z] [A-Z])
 --ssh-extra-args="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
+
+COMPONENTS: comes from parameter in jenkins
+role_name and HOST (inventory its caps) in roboshop.yml playbook
+
+
 
 Host key checking issue :
 
@@ -58,4 +68,7 @@ StrictHostKeyChecking=no UserKnownHostsFile=/dev/null  --> these two we can find
 StrictHostKeyChecking=no --> it never checks for Yes or No
  serKnownHostsFile=/dev/null -->never store host key
 why we need above 2 options --> it all started with security concern
+
+
+
 
