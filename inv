@@ -4,3 +4,17 @@ frontend.roboshop.internal
 mongodb.roboshop.internal
 [CATALOGUE]
 catalogue.roboshop.internal
+[REDIS]
+redis.roboshop.internal
+[USER]
+user.roboshop.internal
+[CART]
+cart.roboshop.internal
+[MYSQL]
+172.31.88.5
+[SHIPPING]
+shipping.roboshop.internal
+[RABBITMQ]
+rabbitmq.roboshop.internal
+[PAYMENT]
+payment.roboshop.internal
