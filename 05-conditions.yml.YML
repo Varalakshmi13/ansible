@@ -1,0 +1,34 @@
+- name: Conditions
+  hosts: localhost
+  vars:
+    a: abc
+    b: 10
+    c: true
+    d: false
+  tasks:
+    - name: Condition on Strings
+      debug:
+        msg: String condition is True
+      when: a == "abc"
+    - name: Condition on Strings 1
+      debug:
+        msg: String condition are not True
+      when: a != "abc"
+    ## Strings should be quoted in when condition
+    - name: Number1
+      debug:
+        msg: Both numbers are equal
+      when: b == 10
+    - name: Number2
+      debug:
+        msg: b is less than 20
+      when: b < 20
+
+    - name: Boolean1
+      debug:
+        msg: C is True
+      when: c
+    - name: Boolean2
+      debug:
+        msg: D is False
+      when: not d
