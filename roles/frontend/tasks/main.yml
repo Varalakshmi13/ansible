@@ -22,8 +22,8 @@
 #Note : #here ending slashes are very important - files of static has to be copied as files under html
 
 - name: Copy roboshop config
-  ansible.builtin.copy:
-    src: systemd.service
+  ansible.builtin.template:
+    src: roboshop.conf
     dest: /etc/nginx/default.d/roboshp.conf
   notify: Restart Nginx
 
