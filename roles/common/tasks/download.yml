@@ -1,12 +1,23 @@
-- name: Download and extract {{COMPONENT}}
+- name: Add Application User
+  ansible.builtin.user:
+    name: roboshop
+    comment: RoboShop Project Application User
+  register: APP_USER_REGISTER
+
+- name: Download and Extract {{COMPONENT}}
   ansible.builtin.unarchive:
     src: https://github.com/roboshop-devops-project/{{COMPONENT}}/archive/main.zip
     dest: /tmp
     remote_src: yes
 
-- name: Start catalogue Service
-  ansible.builtin.systemd:
-    name: catalogue
-    state: restarted
-    enabled: yes
-    daemon_reload: yes
+- name: Cleanup Old Content
+  ansible.builtin.file:
+    path: "{{APP_LOCATION}}"
+    state: absent
+
+- name: Copy App Content
+  become_user: "{{APP_USER}}"
+  ansible.builtin.copy:
+    dest: "{{APP_LOCATION}}"
+    src: /tmp/{{COMPONENT}}-main/
+    remote_src: yes

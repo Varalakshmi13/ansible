@@ -1,11 +1,7 @@
-- name: Configure YUM repos.
-  ansible.builtin.shell: curl -fsSL https://rpm.nodesource.com/setup_lts.x | bash -
-
-- name: Install NodeJS
+- name: Install Maven
   ansible.builtin.yum:
     name:
-      - nodejs
-      - gcc-c++
+      - maven
     state: installed
 
 - name: Setup App USer, Download and Extract {{COMPONENT}} Content
@@ -13,9 +9,10 @@
     name: common
     tasks_from: download
 
-- name: Install NodeJS Dependencies
-  community.general.npm:
-    path: /home/roboshop/{{COMPONENT}}
+- name: Make maven package
+  ansible.builtin.shell: mvn clean package && mv target/shipping-1.0.jar shipping.jar
+  args:
+    chdir: /home/roboshop/{{COMPONENT}}
   become_user: roboshop
 
 - name: Setup SyetemD
