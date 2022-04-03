@@ -25,6 +25,7 @@
   ansible.builtin.copy:
     src: systemd.service
     dest: /etc/nginx/default.d/roboshp.conf
+  notify: Restart Nginx
 
 - name: Start nginx service
   ansible.builtin.systemd:
