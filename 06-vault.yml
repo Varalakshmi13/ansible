@@ -13,4 +13,5 @@
       debug:
         msg: PASSWORD = {{PASS}}
 
-   #ansible-vault encrypt_string abc@123
+#ansible-vault encrypt_string abc@123
+#ansible-playbook --ask-vault-password 06-vault.yml
