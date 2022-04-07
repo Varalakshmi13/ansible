@@ -3,6 +3,10 @@
 pipeline {
   agent any
 
+  options {
+    ansiColor('xterm')
+  }
+
   stages {
     stage('Do  dry run') {
       steps {
