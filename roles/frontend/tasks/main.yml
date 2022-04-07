@@ -30,8 +30,9 @@
     dest: /etc/nginx/default.d/roboshp.conf
   notify: Restart Nginx
 
-- name: Start nginx service
+- name: Start Nginx Service
+  ignore_errors: "{{CHECK_MODE}}"
   ansible.builtin.systemd:
     name: nginx
-    state: restarted
+    state: started
     enabled: yes

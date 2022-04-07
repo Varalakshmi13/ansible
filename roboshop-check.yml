@@ -1,0 +1,58 @@
+#ansible-playbook roboshop-check.yml -e role_name=frontend -e ansible_user=centos -e ansible_password=DevOps321 -e ENV=sandbox
+- name: Create a sandbox instance
+  hosts: localhost
+  gather_facts: False
+  vars:
+    instance_type: t3.micro
+    security_group_id: sg-0833d6226ab417a8b
+    image: ami-0be8b202e69bf1313
+    region: us-east-1
+  tasks:
+    - name: Launch instance
+      amazon.aws.ec2:
+        count: 1
+        group_id: "{{ security_group_id }}"
+        instance_type: "{{ instance_type }}"
+        image: "{{ image }}"
+        wait: true
+        region: "{{ region }}"
+        instance_tags:
+          Name: ansible-role-check-instance
+      register: ec2
+
+    - name: Add new instance to host group
+      add_host:
+        hostname: "{{ item.public_ip }}"
+        groupname: launched
+      loop: "{{ ec2.instances }}"
+
+    - name: Wait for SSH to come up
+      delegate_to: "{{ item.public_ip }}"
+      wait_for_connection:
+        delay: 30
+        timeout: 120
+      loop: "{{ ec2.instances }}"
+    - name: Set a Instance_ID Variable
+      set_fact:
+        INSTANCE_ID: "{{ ec2.instance_ids }}"
+
+- name: Run Role to Test
+  hosts: launched
+  become: True
+  gather_facts: Yes
+  tasks:
+    - name: set the facts per host
+      set_fact:
+        INSTANCE_ID: "{{hostvars['localhost']['INSTANCE_ID']}}"
+    - name: Import the role and Terminate the instance
+      block:
+        - name: Import a role
+          import_role:
+            name: "{{role_name}}"
+      always:
+        - name: Terminate instances that were previously launched
+          delegate_to: 127.0.0.1
+          amazon.aws.ec2:
+            state: 'absent'
+            instance_ids: '{{ INSTANCE_ID }}'
+            region: us-east-1

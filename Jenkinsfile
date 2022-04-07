@@ -1,5 +1,3 @@
-//firs i want to do a dry run
-
 pipeline {
   agent any
 
@@ -7,17 +5,21 @@ pipeline {
     ansiColor('xterm')
   }
 
+  environment {
+    SSH = credentials('SSH')
+  }
+
   stages {
-    stage('Do  dry run') {
+
+    stage('Run Ansible in Sandbox Environment') {
+      when { branch pattern: "PR-.*", comparator: "REGEXP"}
       steps {
         sh '''
-            export ALLOW_WORLD_READABLE_TMPFILES=True
-            ansible-playbook roboshop.yml -e HOST=localhost -e role_name=frontend -C
-        ''' // allow command is to resolve the
+          ansible-playbook roboshop-check.yml -e role_name=frontend -e ansible_user=${SSH_USR} -e ansible_password=${SSH_PSW} -e ENV=sandbox -e CHECK_MODE=true
+        '''
       }
-
     }
-  }
+
 
 
 
