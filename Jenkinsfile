@@ -7,8 +7,9 @@ pipeline {
     stage('Do  dry run') {
       steps {
         sh '''
-            ansible-playbook roboshop.yml -e HOST=localhost -e role_name=frontend
-        '''
+            export ALLOW_WORLD_READABLE_TMPFILES=True
+            ansible-playbook roboshop.yml -e HOST=localhost -e role_name=frontend -C
+        ''' // allow commad is to resolve the
       }
 
     }
