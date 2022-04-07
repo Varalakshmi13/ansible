@@ -20,6 +20,9 @@
     remote_src: yes
 
 #Note : #here ending slashes are very important - files of static has to be copied as files under html
+- name: location.
+  ansible.builtin.shell: pwd
+
 
 - name: Copy roboshop config
   ansible.builtin.template:
