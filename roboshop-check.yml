@@ -56,3 +56,4 @@
             state: 'absent'
             instance_ids: '{{ INSTANCE_ID }}'
             region: us-east-1
+            
