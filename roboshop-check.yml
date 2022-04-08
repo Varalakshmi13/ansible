@@ -5,7 +5,7 @@
   vars:
     instance_type: t3.micro
     security_group_id: sg-0cbaef1cea9ba1c04
-    image: ami-0ebf45e675775a651
+    image: ami-07f2e572bdedc00e1
     region: us-east-1
   tasks:
     - name: Launch instance
