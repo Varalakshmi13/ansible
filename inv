@@ -18,3 +18,5 @@ shipping.roboshop.internal
 rabbitmq.roboshop.internal
 [PAYMENT]
 payment.roboshop.internal
+[localhost]
+localhost ansible_connection=local ansible_python_interpreter=python
