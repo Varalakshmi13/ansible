@@ -13,7 +13,7 @@ pipeline {
   stages {
 
     stage('Check Ansible Style Checks') {
-      when { branch pattern: "ROB-.*", comparator: "REGEXP" }
+      when { branch pattern: "jira.*", comparator: "REGEXP" }
       steps {
         echo "Ansible Style Checks"
         // We will find the right tool.
