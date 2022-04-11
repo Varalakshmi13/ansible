@@ -29,7 +29,19 @@ pipeline {
       }
     }
 
-
+    stage('TAG') {
+      when { branch 'main'}
+      steps {
+        dir('CODE') {
+          git branch: 'main', url: "https://${GIT_USR}:${GIT_PSW}@github.com/varalakshmi13/ansible"
+          sh '''
+            TAG=$(cat VERSIONS.md | head -1 | sed -e 's/# //')
+            git tag $TAG
+            git push --tags
+          '''
+        }
+      }
+    }
   }
 
 }
