@@ -16,6 +16,11 @@
     state: started
     enabled: yes
 
+- name: Install bottle python package
+  pip:
+    name: PyMySQL
+    ececutable: pip3    
+
 - name: Check the DB Password by Collecting Information
   community.mysql.mysql_info:
     login_user: root
@@ -61,7 +66,7 @@
 - name: Download and Extract MySQL
   include_role:
     name: common
-    tasks_from: download
+    tasks_from: download-from-github
 
 - name: Load Schema
   community.mysql.mysql_db:
