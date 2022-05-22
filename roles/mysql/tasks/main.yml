@@ -7,7 +7,6 @@
   ansible.builtin.yum:
     name:
       - mysql-community-server
-      - MySQL-python
     state: installed
 
 - name: Start MySQL Service
