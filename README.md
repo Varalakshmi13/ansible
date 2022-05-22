@@ -10,7 +10,7 @@ Inventory is text file, Then entries in the inventory can be an IP address or DN
 XML 
 
 <courseName>DevOps</courseName>
-<trainerName>Raghu K</trainerName>
+<trainerName>abc K</trainerName>
 <trainees>
     abc@gmail.com,
     xyz@gmail.com
@@ -24,7 +24,7 @@ JSON
 
 {
  "courseName": "DevOps",
- "trainerName": "RaghuK",
+ "trainerName": "abcK",
  "trainees": [
     "abc@gmail.com",
     "xyz@gmail.com"
@@ -38,7 +38,7 @@ JSON
 
 YAML
 courseName: DevOps
-trainerName: RaghuK
+trainerName: abcK
 trainees:
   - abc@gmail.com
   - xyz@gmail.com 
@@ -52,3 +52,5 @@ MARKUP Languages will have data as
 KEY - VALUE (Regular key value)
 KEY - MULTIPLE VALUES (List) (ex: trainees)
 KEY - KEY - VALUE (MAP, DICT) (ex: timing)
+
+ansible-pull -U https://github.com/Varalakshmi13/ansible roboshop.yml -e HOST=localhost -e role_name=cart -e APP_VERSION=1.0.0 -e ENV=dev
