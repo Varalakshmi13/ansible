@@ -1,7 +1,7 @@
 [FRONTEND]
 frontend.roboshop.internal
 [MONGODB]
-mongodb.roboshop.internal
+172.31.93.18
 [CATALOGUE]
 catalogue.roboshop.internal
 [REDIS]
@@ -18,5 +18,5 @@ shipping.roboshop.internal
 rabbitmq.roboshop.internal
 [PAYMENT]
 payment.roboshop.internal
-[localhost]
-localhost ansible_connection=local ansible_python_interpreter=python
+
+

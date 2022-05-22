@@ -1,8 +1,5 @@
-- name: play on role
+- name: Play on role
   hosts: all
   roles:
     - demo
 
-
-
-#ansible-playbook -i inv -u centos -e ansible_password=DevOps321  03-roles.yml

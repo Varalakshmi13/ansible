@@ -1,35 +1,30 @@
-192.123.2.1
+192.168.0.10
 sample.roboshop.internal
-192.160.0.[10:20]
+192.168.0.[10:20]
 
-#Institute in USA(multi reg) and India(can extend to multi region)
-#web,app,db
-COUNTRYCODE-DCNO=DCNO-APPTYPE-PROJECTCDE-ENV-INDEX.DOMAIN
-2c-2n-web/app/db-5c-1c-2n.domain
+# Institute (Company) , USA (Multi regions) , INDIA  (Multi regions)
+#web, app, db
+
+COUNTRYCODE-DCNO-APPTYPE-PROJECTCODE-ENV-INDEX.DOMAIN
+2C-2N-web/app/db-5C-1C-2N.DOMAIN
+
 us-01-web-catlg-d-01.roboshop.internal
 
-#roboshop scope
-[CATALOGUE]
-catalogue-dev.roboshop.internal
-catalogue-prd.roboshop.internal
+# Roboshop our scope in lab
 
-[dev]
+[DEV]
 catalogue-dev.roboshop.internal
 cart-dev.roboshop.internal
 
-[prd]
+[PRD]
 catalogue-prd.roboshop.internal
 cart-prd.roboshop.internal
 
-#ansible:
-#ansible -i inventory-sample all --list-hosts
-#ansible -i inventory-sample CATALOGUE --list-hosts
-#ansible -i inventory-sample dev --list-hosts
-#ansible -i inventory-sample  -i /tmp/1 all --list-hosts
-#ansible -i host1,host2 all --list-hosts
-#ansible -i localhost, all --list-hosts
+[CATALOGUE]
+catalogue-prd.roboshop.internal
+catalogue-dev.roboshop.internal
 
-#ansible -i inv all -m ping
-#ansible -i inv all -u centos -k -m ping
-#ansible -i inv all -u centos -k -b -m yum -a name=nginx
-#ansible -i inv all -u centos -k -b -m systemd -a "name=nginx state=started"
+
+
+
+

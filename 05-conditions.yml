@@ -14,7 +14,7 @@
       debug:
         msg: String condition are not True
       when: a != "abc"
-    ## Strings should be quoted in when condition
+## Strings should be quoted in when condition
     - name: Number1
       debug:
         msg: Both numbers are equal

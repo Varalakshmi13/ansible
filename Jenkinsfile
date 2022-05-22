@@ -13,7 +13,7 @@ pipeline {
   stages {
 
     stage('Check Ansible Style Checks') {
-      when { branch pattern: "jira.*", comparator: "REGEXP" }
+      when { branch pattern: "ROB-.*", comparator: "REGEXP" }
       steps {
         echo "Ansible Style Checks"
         // We will find the right tool.
@@ -29,6 +29,19 @@ pipeline {
       }
     }
 
+    stage('TAG') {
+      when { branch 'main'}
+      steps {
+        dir('CODE') {
+          git branch: 'main', url: "https://${GIT_USR}:${GIT_PSW}@github.com/raVaralakshmi13/ansible"
+          sh '''
+            TAG=$(cat VERSIONS.md | head -1 | sed -e 's/# //')
+            git tag $TAG 
+            git push --tags            
+          '''
+        }
+      }
+    }
 
   }
 

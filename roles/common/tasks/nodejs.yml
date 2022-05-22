@@ -12,13 +12,18 @@
   ansible.builtin.include_role:
     name: common
     tasks_from: download
+  vars:
+    APP_LOCATION: "/home/roboshop/{{COMPONENT}}"
+    APP_USER: roboshop
 
-- name: Install NodeJS Dependencies
-  community.general.npm:
-    path: /home/roboshop/{{COMPONENT}}
-  become_user: roboshop
+#- name: Install NodeJS Dependencies
+#  community.general.npm:
+#    path: /home/roboshop/{{COMPONENT}}
+#  become_user: roboshop
 
 - name: Setup SyetemD
   ansible.builtin.include_role:
     name: common
     tasks_from: systemd
+
+

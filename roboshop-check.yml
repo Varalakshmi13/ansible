@@ -1,22 +1,21 @@
-#ansible-playbook roboshop-check.yml -e role_name=frontend -e ansible_user=centos -e ansible_password=DevOps321 -e ENV=sandbox
 - name: Create a sandbox instance
   hosts: localhost
   gather_facts: False
   vars:
     instance_type: t3.micro
-    security_group_id: sg-0cbaef1cea9ba1c04
+    security_group_id: sg-0833d6226ab417a8b
     image: ami-07f2e572bdedc00e1
     region: us-east-1
   tasks:
     - name: Launch instance
       amazon.aws.ec2:
-        count: 1
-        group_id: "{{ security_group_id }}"
-        instance_type: "{{ instance_type }}"
-        image: "{{ image }}"
-        wait: true
-        region: "{{ region }}"
-        instance_tags:
+         count: 1
+         group_id: "{{ security_group_id }}"
+         instance_type: "{{ instance_type }}"
+         image: "{{ image }}"
+         wait: true
+         region: "{{ region }}"
+         instance_tags:
           Name: ansible-role-check-instance
       register: ec2
 
@@ -56,4 +55,4 @@
             state: 'absent'
             instance_ids: '{{ INSTANCE_ID }}'
             region: us-east-1
-            
+

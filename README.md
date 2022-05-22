@@ -1,22 +1,54 @@
 # ansible
 
-Markup languages :  (key - value)
-XML
-JSON
+Ansible configuration file :  https://raw.githubusercontent.com/ansible/ansible/stable-2.11/examples/ansible.cfg
+
+## Inventory 
+Inventory is text file, Then entries in the inventory can be an IP address or DNS Name. 
+
+
+# 
+XML 
+
+<courseName>DevOps</courseName>
+<trainerName>Raghu K</trainerName>
+<trainees>
+    abc@gmail.com,
+    xyz@gmail.com
+</trainees>
+<timing>
+    <morning>6AM</morning>
+    <evening>10PM</evening>
+</timings>
+
+JSON 
+
+{
+ "courseName": "DevOps",
+ "trainerName": "RaghuK",
+ "trainees": [
+    "abc@gmail.com",
+    "xyz@gmail.com"
+  ],
+ "timing": {
+    "morning": "6AM",
+    "evening": "10PM"
+ }
+
+}
+
 YAML
+courseName: DevOps
+trainerName: RaghuK
+trainees:
+  - abc@gmail.com
+  - xyz@gmail.com 
+timing:
+  morning: 6AM 
+  evening: 10PM 
 
-###
-key : value
 
-key : Multiple values(list)
-key : key-value (Map, Dict)
-
-Makefile : Compulsary tab space
-Ansible: No tab space
-
-For Json : jq is json query
-cat /tmp/1.json | jq
-cat /tmp/1.json | jq .CourseName
-cat /tmp/1.json | jq '.topics.aws[]'
-
-yq in backend converts to jq
+### 
+MARKUP Languages will have data as 
+KEY - VALUE (Regular key value)
+KEY - MULTIPLE VALUES (List) (ex: trainees)
+KEY - KEY - VALUE (MAP, DICT) (ex: timing)

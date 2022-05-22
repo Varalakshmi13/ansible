@@ -1,13 +1,15 @@
-- name: Play level vars
+- name: Play level variables
   hosts: all
   vars:
-    URL: play.google.com
+    URL: play.example.com
   tasks:
     - name: Print URL
       ansible.builtin.debug:
         msg: URL = {{URL}}
 
-- name: Play level variables from files
+# If we declare a varible on play level then all the tasks can access that variable
+
+- name: Play level variables from a file
   hosts: all
   vars_files:
     - sample-vars.yml
@@ -16,56 +18,46 @@
       ansible.builtin.debug:
         msg: URL = {{URL}}
 
-
-- name: Task level variables
+- name: Task Level variable
   hosts: all
   tasks:
     - name: Print URL
       ansible.builtin.debug:
         msg: URL = {{URL}}
       vars:
-        URL: tasks.google.com
+        URL: hosts.example.com
 
-#if we declare var at task level the only that task can access the variable
 
-- name: inventory level variables
+# If we declare a variable on tasls level then only that tasks can access that variable
+
+- name: Inventory variable
   hosts: all
   tasks:
     - name: Print URL
       ansible.builtin.debug:
         msg: URL = {{URL}}
 
-#command line variable :
-        #ansible-playbook -i inv -u centos -k 02-vars.yml -e URL=cli.google.com
-        #cli has first precedence
-    #order :  cli > task level > vars from file > play level > inv
 
-
-- name: Fact variables
+- name: Fact Variable
   hosts: all
   tasks:
     - name: Print Hostname
       ansible.builtin.debug:
-        msg: Architecture = {{ansible_architecture}}
+        msg: Architecture = {{ansible_architecture}}, IP address = {{ansible_eth0.ipv4.address}}
 
-# to not to prompt for pwd :  git pull;ansible-playbook -i inv -u centos -e ansible_password=DevOps321  02-vars.yml -e Architecture=32
-#below are at play level
-- name: Register var
+
+- name: Register variable
   hosts: all
   tasks:
-    - name: Run schell module
+    - name: Run a shell command
       ansible.builtin.shell: uptime
       register: OUT
 
-    - name: print output of shell
-      ansible.builtin.debug:
-        msg: "{{OUT.stdout}}"   #Sstarted with variable, o we used quote
-
-    - name: Set a fact #you are declaring variable in between and you are using it for remaining playbook using facts
+    - name: Set a fact
       ansible.builtin.set_fact:
         OUTPUT: "{{OUT.stdout}}"
 
-    - name: print output of shell
+    - name: Print Output of shell command
       ansible.builtin.debug:
         msg: "{{OUTPUT}}"
 
