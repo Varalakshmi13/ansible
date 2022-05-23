@@ -15,7 +15,7 @@
     state: started
     enabled: yes
 
-- name: Install bottle python package
+- name: Install PyMySQL
   pip:
     name: PyMySQL
     ececutable: pip3    
