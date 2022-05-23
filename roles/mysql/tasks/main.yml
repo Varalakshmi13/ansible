@@ -7,7 +7,6 @@
   ansible.builtin.yum:
     name:
       - mysql-community-server
-      - MySQL-python
     state: installed
 
 - name: Start MySQL Service
@@ -15,6 +14,11 @@
     name: mysqld
     state: started
     enabled: yes
+
+- name: Install PyMySQL
+  pip:
+    name: PyMySQL
+    executable: pip3    
 
 - name: Check the DB Password by Collecting Information
   community.mysql.mysql_info:
@@ -61,7 +65,7 @@
 - name: Download and Extract MySQL
   include_role:
     name: common
-    tasks_from: download
+    tasks_from: download-from-github
 
 - name: Load Schema
   community.mysql.mysql_db:
@@ -70,3 +74,4 @@
     target: /tmp/mysql-main/shipping.sql
     login_user: root
     login_password: RoboShop@1
+
